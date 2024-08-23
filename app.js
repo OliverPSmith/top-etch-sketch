@@ -1,18 +1,18 @@
+
 const gridContainer = document.querySelector('#grid-container');
-const gridSizeBtn = document.querySelector('#grid-size');
+
+let pixelNum = 16;
+let containerSize = 500; 
 
 let currentColor = 'crimson';
 
-let gridSize = 16;
-let containerSize = 500;
-
 function createGrid () {
-    const squareSize = containerSize / gridSize;
-    for (let i = 0; i < gridSize; i++) {
+    const squareSize = containerSize / pixelNum;
+    for (let i = 0; i < pixelNum; i++) {
         const row = document.createElement('div');
         row.classList.add('row');
     
-        for (let i = 0; i < gridSize; i++) {
+        for (let i = 0; i < pixelNum; i++) {
             const square = document.createElement('div');
             square.classList.add('square');
             square.style.width = `${squareSize}px`;
@@ -34,15 +34,15 @@ createGrid();
 
 const gridSlider = document.querySelector('#gridSlider');
 const sliderNum = document.querySelector('#sliderNum');
-sliderNum.textContent = gridSize;
+sliderNum.textContent = pixelNum;
 
 function changeGridSize () {
     const rows = document.querySelectorAll('.row');
     rows.forEach((rowLine) => {
         gridContainer.removeChild(rowLine);
-    })
+    });
     sliderNum.textContent = gridSlider.value;
-    gridSize = gridSlider.value;
+    pixelNum = gridSlider.value;
     createGrid();
 }
 
